@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #123524, darkgray);
+    padding: 20px;
+    color: #333;
+    text-align: center;
+    color: beige;
+    font-family: "League Gothic", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+     font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    form {
+    margin-bottom: 30px;
+}
+
+    .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+    .movie {
+    flex-basis: calc(25% - 20px);
+    background-color: gray;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+    .movie:hover {
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
+}
+
+    .movie img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+    .movie h3 {
+        font-size: 2rem;
+    }
+
+    .movie p {
+    color: beige;
+    font-size: 1rem;
+}
+</style>
+
+    <h1>Similar Movies</h1>
+      <form action="/search" method="post">
+          <input type="text" name="query" placeholder="movie title">
+          <button type="submit">Check It Out</button>
+      </form>
+  
+      <div class="image-container">
+          <% if (movies && movies.length > 0) { %>
+              <% movies.forEach(movie => { %>
+                  <div class="movie">
+                      <h3><%= movie.title %></h3>
+                      <img class="images" src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="<%= movie.title %>" >
+                      <p><%= movie.overview %></p>
+                  </div>
+              <% }); %>
+          <% } else { %>
+              <p>Search movies</p>
+          <% } %>
+      </div>
+  
+      <a href="/">Find More Similar Movies</a>
+
+</body>
+</html>
