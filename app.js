@@ -24,10 +24,9 @@ app.get('/', async (req, res) => {
     try {
         // sends a GET request
         const response = await axios.get(`${URL}?query=&api_key=${api}&language=en-US`);
-        const title = response.data.results;
-        res.render('movies', { title });
+        const movies = response.data.results;
+        res.render('movies', { movies });
     } catch (error) {
-        
         console.error("Unable to reach API.", error);
     }
 });
@@ -49,4 +48,7 @@ app.post('/search', async (req, res) => {
 app.listen(PORT, () => {
     console.log('Current port:',PORT);
 });
+
+
+
 
